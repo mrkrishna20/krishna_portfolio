@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {
   Mail,
   FileText,
+  Printer,
+  Globe,
   ExternalLink,
   Copy,
   Check,
@@ -17,13 +19,12 @@ import {
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './components/Icons';
 import { profile } from './data/portfolioData';
-import ResumeModal from './components/ResumeModal';
+import './components/ResumeModal.css';
 import './App.css';
 
 export default function App() {
   const [lightMode, setLightMode] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [showResume, setShowResume] = useState(false);
 
   const toggleTheme = () => {
     const next = !lightMode;
@@ -57,20 +58,11 @@ export default function App() {
             <a href="#skills" className="nav-link">Skills</a>
             <a href="#experience" className="nav-link">Experience</a>
             <a href="#projects" className="nav-link">Projects</a>
+            <a href="#resume" className="nav-link">Resume</a>
             <a href="#contact" className="nav-link">Contact</a>
           </div>
 
           <div className="nav-actions">
-            <button
-              type="button"
-              className="btn btn-outline"
-              style={{ padding: '6px 14px', fontSize: '0.8125rem' }}
-              onClick={() => setShowResume(true)}
-            >
-              <FileText size={14} />
-              <span>Resume</span>
-            </button>
-
             <button
               type="button"
               className="theme-btn"
@@ -93,18 +85,7 @@ export default function App() {
             <span>{profile.status}</span>
           </div>
 
-          <div className="hero-name-row">
-            <h1 className="hero-name">{profile.name}</h1>
-            <button
-              type="button"
-              className="btn btn-outline hero-resume-btn"
-              onClick={() => setShowResume(true)}
-              title="View & Download Curriculum Vitae"
-            >
-              <FileText size={15} />
-              <span>View Resume</span>
-            </button>
-          </div>
+          <h1 className="hero-name">{profile.name}</h1>
           <p className="hero-role">
             {profile.title} &nbsp;•&nbsp; <span>{profile.specialization}</span>
           </p>
@@ -300,6 +281,142 @@ export default function App() {
           </div>
         </section>
 
+        {/* Resume Section */}
+        <section id="resume" className="section">
+          <div className="section-title-wrap" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '16px' }}>
+            <div>
+              <span className="section-label">Curriculum Vitae</span>
+              <h2 className="section-title">Resume</h2>
+            </div>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => window.print()}
+              title="Print or save as PDF"
+            >
+              <Printer size={16} />
+              <span>Print / Save PDF</span>
+            </button>
+          </div>
+
+          <div className="resume-document" id="printable-resume" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)' }}>
+
+            {/* Header */}
+            <header className="resume-header">
+              <h1 className="resume-name">{profile.name}</h1>
+              <p className="resume-title">SOFTWARE ENGINEER &nbsp;•&nbsp; FULL STACK DEVELOPER</p>
+              <div className="resume-contact-row">
+                <span><MapPin size={13} /> {profile.location}</span>
+                <span><Phone size={13} /> {profile.phone}</span>
+                <span><Mail size={13} /> {profile.email}</span>
+                <span><Globe size={13} /> github.com/mrkrishna20</span>
+              </div>
+            </header>
+
+            {/* Profile */}
+            <section className="resume-sec">
+              <h2 className="resume-sec-title">Profile</h2>
+              <ul className="resume-bullet-list">
+                <li>3+ Years of experience in Full Stack Development (React.js, Node.js, Java &amp; Ruby on Rails).</li>
+                <li>Skilled in advanced web development, mobile development, UI design, testing, and debugging applications. Adept at self-management and collaborative work in team settings.</li>
+                <li>Possesses working knowledge of Java, Python, React Native, and Angular.</li>
+              </ul>
+
+              <div style={{ marginTop: '12px' }}>
+                <strong style={{ fontSize: '0.875rem', color: '#0F172A', display: 'block', marginBottom: '6px' }}>Core Responsibilities &amp; Impact:</strong>
+                <ul className="resume-bullet-list">
+                  {profile.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx}>{resp}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            {/* Skills */}
+            <section className="resume-sec">
+              <h2 className="resume-sec-title">Technical Skills</h2>
+              <div className="resume-skills-block">
+                <div className="resume-skill-row">
+                  <strong>Frontend:</strong> {profile.skills.frontend.join(", ")}
+                </div>
+                <div className="resume-skill-row">
+                  <strong>Backend:</strong> {profile.skills.backend.join(", ")}
+                </div>
+                <div className="resume-skill-row">
+                  <strong>Databases:</strong> {profile.skills.databases.join(", ")}
+                </div>
+                <div className="resume-skill-row">
+                  <strong>Tools &amp; Cloud:</strong> {profile.skills.devops.join(", ")}
+                </div>
+              </div>
+            </section>
+
+            {/* Employment History */}
+            <section className="resume-sec">
+              <h2 className="resume-sec-title">Employment History</h2>
+              <div className="resume-exp-list">
+                {profile.experience.map((item, idx) => (
+                  <div key={idx} className="resume-exp-entry">
+                    <div className="resume-exp-heading">
+                      <div className="exp-role-co">
+                        <strong>{item.role}</strong>, <span className="exp-company">{item.company}</span>
+                      </div>
+                      <span className="exp-period">{item.location} &nbsp;|&nbsp; {item.period}</span>
+                    </div>
+                    <ul className="resume-bullet-list">
+                      {item.points.map((bullet, bIdx) => (
+                        <li key={bIdx}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Projects */}
+            <section className="resume-sec">
+              <h2 className="resume-sec-title">Featured Projects</h2>
+              <div className="resume-exp-list">
+                {profile.projects.map((proj, idx) => (
+                  <div key={idx} className="resume-exp-entry">
+                    <div className="resume-exp-heading">
+                      <div className="exp-role-co">
+                        <strong>{proj.title}</strong>
+                        {proj.live && proj.live.includes('vercel.app') && (
+                          <span style={{ fontSize: '0.8rem', marginLeft: '8px', color: '#0284C7' }}>
+                            (Link: {proj.live.replace('https://', '')})
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p style={{ fontSize: '0.85rem', color: '#475569', marginBottom: '6px' }}>{proj.description}</p>
+                    {proj.highlights && (
+                      <ul className="resume-bullet-list">
+                        {proj.highlights.map((h, hIdx) => (
+                          <li key={hIdx}>{h}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Education */}
+            <section className="resume-sec">
+              <h2 className="resume-sec-title">Education</h2>
+              <div className="resume-edu-item">
+                <div className="edu-top">
+                  <strong>{profile.education[0].degree}</strong>
+                  <span className="exp-period">{profile.education[0].period}</span>
+                </div>
+                <p className="edu-sub">{profile.education[0].institution}</p>
+              </div>
+            </section>
+
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section id="contact" className="section">
           <div className="contact-clean-box">
@@ -352,11 +469,6 @@ export default function App() {
         </footer>
 
       </main>
-
-      {/* Printable Resume Modal */}
-      {showResume && (
-        <ResumeModal onClose={() => setShowResume(false)} />
-      )}
 
     </div>
   );
