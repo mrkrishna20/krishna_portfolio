@@ -1,0 +1,326 @@
+.arch-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, rgba(14, 20, 36, 0.4) 0%, transparent 70%);
+}
+
+.arch-interactive-wrapper {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .arch-interactive-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Map Container */
+.arch-map-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.arch-map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.arch-map-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.arch-hint {
+  font-size: 0.75rem;
+  color: var(--react-color);
+  font-family: var(--font-mono);
+}
+
+.arch-nodes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Individual Node Box */
+.arch-node-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  position: relative;
+}
+
+.arch-node-box:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.arch-node-box.active {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.node-react.active {
+  border-color: var(--react-color);
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.25);
+}
+
+.node-rails.active {
+  border-color: var(--rails-color);
+  box-shadow: 0 0 24px rgba(225, 29, 72, 0.25);
+}
+
+.node-node.active {
+  border-color: var(--node-color);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+}
+
+.node-sidekiq.active {
+  border-color: #F59E0B;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+}
+
+.node-postgres.active {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.25);
+}
+
+.node-icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.node-info {
+  flex: 1;
+}
+
+.node-tag {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  display: block;
+}
+
+.node-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 2px 0;
+}
+
+.node-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.node-status-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(6, 182, 212, 0.1);
+  color: #38BDF8;
+  font-family: var(--font-mono);
+}
+
+.rails-chip {
+  background: rgba(225, 29, 72, 0.1);
+  color: #FB7185;
+}
+
+.node-chip {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34D399;
+}
+
+.sidekiq-chip {
+  background: rgba(245, 158, 11, 0.1);
+  color: #FBBF24;
+}
+
+.postgres-chip {
+  background: rgba(139, 92, 246, 0.1);
+  color: #A78BFA;
+}
+
+/* Connector Line */
+.arch-connector-v {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 6px 0;
+}
+
+.flow-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.6) 0%, rgba(225, 29, 72, 0.6) 100%);
+}
+
+.flow-tag {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  position: relative;
+  z-index: 2;
+}
+
+.arch-backend-cluster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .arch-backend-cluster {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Detail Inspection Panel */
+.arch-detail-panel {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(10, 14, 25, 0.88);
+}
+
+.detail-panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.detail-indicator-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+
+.detail-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.detail-tech-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.detail-label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.detail-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.detail-metric-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+}
+
+.metric-text {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.detail-code-preview {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #060911;
+}
+
+.detail-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.code-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.code-tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.detail-code-block {
+  padding: 16px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #E2E8F0;
+  overflow-x: auto;
+  max-height: 250px;
+}

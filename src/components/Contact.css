@@ -1,0 +1,244 @@
+.contact-section {
+  position: relative;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card, .form-card {
+  padding: 32px;
+  height: 100%;
+}
+
+.contact-card-tag {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: #34D399;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-card-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+body.light-theme .contact-card-title {
+  color: #0F172A;
+}
+
+.contact-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.contact-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+}
+
+.detail-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--react-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-text-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.detail-lbl {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.detail-val {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.copy-mini-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.copy-mini-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-social-bar {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-icon-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-group-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--react-color);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.2);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #0F172A;
+  color: #FFFFFF;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+}
+
+.form-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 16px;
+  height: 100%;
+}
+
+.success-icon-bubble {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-success-state h3 {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+}
+
+body.light-theme .form-success-state h3 {
+  color: #0F172A;
+}
+
+.form-success-state p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  max-width: 400px;
+  line-height: 1.5;
+}
