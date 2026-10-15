@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  FileText, 
-  ExternalLink, 
-  Copy, 
-  Check, 
-  MapPin, 
+import {
+  Mail,
+  FileText,
+  ExternalLink,
+  Copy,
+  Check,
+  MapPin,
   Phone,
-  Sun, 
+  Sun,
   Moon,
   ArrowUpRight,
   Server,
@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <div className="portfolio-root">
-      
+
       {/* Sticky Navigation */}
       <nav className="site-nav">
         <div className="container nav-inner">
@@ -61,8 +61,8 @@ export default function App() {
           </div>
 
           <div className="nav-actions">
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-outline"
               style={{ padding: '6px 14px', fontSize: '0.8125rem' }}
               onClick={() => setShowResume(true)}
@@ -71,9 +71,9 @@ export default function App() {
               <span>Resume</span>
             </button>
 
-            <button 
-              type="button" 
-              className="theme-btn" 
+            <button
+              type="button"
+              className="theme-btn"
               onClick={toggleTheme}
               aria-label="Toggle Theme"
               title="Toggle theme"
@@ -95,8 +95,8 @@ export default function App() {
 
           <div className="hero-name-row">
             <h1 className="hero-name">{profile.name}</h1>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-outline hero-resume-btn"
               onClick={() => setShowResume(true)}
               title="View & Download Curriculum Vitae"
@@ -110,7 +110,7 @@ export default function App() {
           </p>
 
           <p className="hero-meta-strip" style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginBottom: '16px', fontFamily: 'var(--font-mono)' }}>
-            📍 {profile.location} &nbsp;|&nbsp; 📞 {profile.phone}
+            📍 {profile.location}
           </p>
 
           <p className="hero-summary">{profile.summary}</p>
@@ -119,6 +119,11 @@ export default function App() {
             <a href={`mailto:${profile.email}`} className="btn btn-primary">
               <Mail size={16} />
               <span>Get in touch</span>
+            </a>
+
+            <a href={`tel:${profile.phone.replace(/[^0-9+]/g, '')}`} className="btn btn-outline" title="Call directly">
+              <Phone size={16} />
+              <span>{profile.phone}</span>
             </a>
 
             <button type="button" onClick={copyEmail} className="btn btn-outline">
@@ -157,7 +162,7 @@ export default function App() {
           </div>
 
           <div className="skills-grid">
-            
+
             {/* Backend Skills */}
             <div className="skill-category-card">
               <h3 className="skill-category-title">
@@ -300,7 +305,7 @@ export default function App() {
           <div className="contact-clean-box">
             <h2 className="contact-heading">Get In Touch</h2>
             <p className="contact-text">
-              I am currently open to full-time engineering opportunities, contract roles, and technical discussions. 
+              I am currently open to full-time engineering opportunities, contract roles, and technical discussions.
               Drop me an email and let's talk.
             </p>
 
