@@ -102,7 +102,10 @@ export default function App() {
               <span>Get in touch</span>
             </a> */}
 
-            <a href="#resume" className="btn btn-primary">View Resume</a>
+            <a href="#resume" className="btn btn-primary">
+              <Download size={16} />
+              Resume
+            </a>
 
             <a href={`tel:${profile.phone.replace(/[^0-9+]/g, '')}`} className="btn btn-outline" title="Call directly">
               <Phone size={16} />
