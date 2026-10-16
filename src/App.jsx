@@ -12,6 +12,7 @@ import {
   Sun,
   Moon,
   ArrowUpRight,
+  Download,
   Server,
   Code2,
   Database,
@@ -291,7 +292,17 @@ export default function App() {
               <span className="section-label">Curriculum Vitae</span>
               <h2 className="section-title">Resume</h2>
             </div>
-            <button
+
+            <a
+              href="\Krishna _ Full Stack Engineer — Node.js, React.js & Ruby on Rails.pdf"
+              download="Krishna-Full Stack Engineer — Node.js, React.js & Ruby on Rails.pdf"
+              className="btn btn-primary"
+            >
+              <Download size={16} />
+              <span>Download Resume PDF</span>
+            </a>
+
+            {/* <button
               type="button"
               className="btn btn-primary"
               onClick={() => window.print()}
@@ -299,7 +310,7 @@ export default function App() {
             >
               <Printer size={16} />
               <span>Print / Save PDF</span>
-            </button>
+            </button> */}
           </div>
 
           <div className="resume-document" id="printable-resume" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)' }}>
@@ -351,6 +362,18 @@ export default function App() {
                 <div className="resume-skill-row">
                   <strong>Tools &amp; Cloud:</strong> {profile.skills.devops.join(", ")}
                 </div>
+              </div>
+            </section>
+
+            {/* Education */}
+            <section className="resume-sec">
+              <h2 className="resume-sec-title">Education</h2>
+              <div className="resume-edu-item">
+                <div className="edu-top">
+                  <strong>{profile.education[0].degree}</strong>
+                  <span className="exp-period">{profile.education[0].period}</span>
+                </div>
+                <p className="edu-sub">{profile.education[0].institution}</p>
               </div>
             </section>
 
@@ -406,7 +429,7 @@ export default function App() {
             </section>
 
             {/* Education */}
-            <section className="resume-sec">
+            {/* <section className="resume-sec">
               <h2 className="resume-sec-title">Education</h2>
               <div className="resume-edu-item">
                 <div className="edu-top">
@@ -415,7 +438,7 @@ export default function App() {
                 </div>
                 <p className="edu-sub">{profile.education[0].institution}</p>
               </div>
-            </section>
+            </section> */}
 
           </div>
         </section>
