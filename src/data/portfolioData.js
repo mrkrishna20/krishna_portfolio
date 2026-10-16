@@ -2,7 +2,7 @@ export const profile = {
   name: "Krishna",
   title: "Full Stack Software Engineer",
   specialization: "Node.js • React.js • Ruby on Rails",
-  status: "Available for Full-time Roles",
+  status: "Available for Full-time Roles and Immediate Joiner",
   location: "Noida, India / Chandigarh (Ready to relocate)",
   phone: "+91 8427579444",
   email: "mrkrishnawork@gmail.com",
@@ -10,7 +10,7 @@ export const profile = {
   github: "https://github.com/mrkrishna20",
   linkedin: "https://www.linkedin.com/in/mr-krishna-thakur/",
   summary: "Full Stack Engineer with 3+ years of experience designing scalable backend architectures and building responsive, high-performance web and mobile applications. Specialized in Node.js, React.js, and Ruby on Rails, with deep expertise in relational database design, background task queues, and REST/GraphQL APIs.",
-  
+
   about: [
     "I am a software engineer dedicated to building resilient, production-ready web and mobile platforms. My core strength lies in bridging backend and frontend engineering: developing high-concurrency microservices in Node.js, crafting fluid user interfaces with React and Next.js, and architecting transactional domain models in Ruby on Rails.",
     "Over my career, I have delivered multi-tenant SaaS platforms, integrated complex payment and notification systems (Slack, Gmail), optimized PostgreSQL database queries, and led teams in shipping scalable features. I care deeply about clean code architecture, automated testing (RSpec, Jest), and developer ergonomics."

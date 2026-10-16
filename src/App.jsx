@@ -58,7 +58,6 @@ export default function App() {
             <a href="#skills" className="nav-link">Skills</a>
             <a href="#experience" className="nav-link">Experience</a>
             <a href="#projects" className="nav-link">Projects</a>
-            <a href="#resume" className="nav-link">Resume</a>
             <a href="#contact" className="nav-link">Contact</a>
           </div>
 
@@ -97,10 +96,12 @@ export default function App() {
           <p className="hero-summary">{profile.summary}</p>
 
           <div className="hero-actions">
-            <a href={`mailto:${profile.email}`} className="btn btn-primary">
+            {/* <a href={`mailto:${profile.email}`} className="btn btn-primary">
               <Mail size={16} />
               <span>Get in touch</span>
-            </a>
+            </a> */}
+
+            <a href="#resume" className="btn btn-primary">View Resume</a>
 
             <a href={`tel:${profile.phone.replace(/[^0-9+]/g, '')}`} className="btn btn-outline" title="Call directly">
               <Phone size={16} />
@@ -112,12 +113,14 @@ export default function App() {
               <span>{copiedEmail ? 'Email Copied' : profile.email}</span>
             </button>
 
-            <a href={profile.github} target="_blank" rel="noreferrer" className="btn btn-social" title="GitHub Profile">
-              <GithubIcon size={18} />
-            </a>
-
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="btn btn-social" title="LinkedIn Profile">
               <LinkedinIcon size={18} />
+              <span>LinkedIn</span>
+            </a>
+
+            <a href={profile.github} target="_blank" rel="noreferrer" className="btn btn-social" title="GitHub Profile">
+              <GithubIcon size={18} />
+              <span>GitHub</span>
             </a>
           </div>
         </header>
